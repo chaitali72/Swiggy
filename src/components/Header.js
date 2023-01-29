@@ -7,51 +7,66 @@ const Header = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const isOnline = useOnline();
   return (
-    <nav>
-      <div className="nav-container">
-        <div className="nav-logo">
-          <Link to="/">
+    <nav className="flex justify-between bg-gray-500 shadow-md">
+      <ul className="flex py-10">
+        <li className="px-2 ">
+          <Link
+            to="/"
+            className=" bg-gray-900 text-white px-3 py-2 rounded-md text-lg font-medium"
+          >
             {" "}
-            <img src={FOOD_LOGO} alt="food-logo" />
+            Home
           </Link>
-        </div>
-        <div className="nav-links">
-          <ul>
-            <li>
-              <Link to="/"> Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>Cart</li>
-            <li> {isOnline ? " ✅ " : " 🛑 "}</li>
-            {!isLogedIn ? (
-              <button
-                type="submit"
-                className="sign-btn"
-                onClick={() => {
-                  setIsLogedIn(true);
-                }}
-              >
-                Sign In
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="sign-btn"
-                onClick={() => {
-                  setIsLogedIn(false);
-                }}
-              >
-                Sign Out
-              </button>
-            )}
-          </ul>
-        </div>
-      </div>
+        </li>
+        <li className="px-2">
+          <Link
+            to="/about"
+            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+          >
+            About
+          </Link>
+        </li>
+        <li className="px-2">
+          {" "}
+          <Link
+            to="/contact"
+            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+          >
+            Contact
+          </Link>
+        </li>
+
+        <li className="px-2">
+          <Link
+            to="/"
+            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium"
+          >
+            Cart
+          </Link>
+        </li>
+        {/* <li> {isOnline ? " ✅ " : " 🛑 "}</li> */}
+      </ul>
+      {!isLogedIn ? (
+        <button
+          type="button"
+          className="rounded-md my-5 p-4 text-gray bg-white hover:text-gray font-medium text-lg"
+          onClick={() => {
+            setIsLogedIn(true);
+          }}
+        >
+          Sign In
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="rounded-md my-5 p-4 text-gray  bg-white font-medium hover:text-gray text-lg"
+          onClick={() => {
+            setIsLogedIn(false);
+          }}
+        >
+          Sign Out
+        </button>
+      )}
     </nav>
   );
 };
