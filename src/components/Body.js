@@ -19,24 +19,27 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json);
+    console.log("use EFfect");
     setFilterdRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setAllRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   }
+  console.log("swiggy");
   if (!allResturant) return null;
+
   return allResturant?.length === 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="flex justify-center m-10">
         <input
           type="text"
           placeholder="search here..."
-          className="search-btn"
+          className="w-3/6 p-4 pl-10 text-lg font-medium text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="search-btn"
+          className="ml-5 text-2xl text-white right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           onClick={() => {
             const data = filterData(searchText, allResturant);
             setFilterdRestaurant(data);
@@ -45,7 +48,7 @@ const Body = () => {
           Submit
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {filteredRestaurant.map((restaurant) => {
           return (
             <Link
