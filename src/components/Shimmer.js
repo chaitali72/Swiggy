@@ -6,7 +6,10 @@ const Shimmer = () => {
       {Array(12)
         .fill("")
         .map((e, index) => (
-          <div className="border-2 rounded-xl h-96 w-72 p-3 m-5 shadow-2xl">
+          <div
+            className="border-2 rounded-xl h-96 w-72 p-3 m-5 shadow-2xl"
+            key={index}
+          >
             <div className="h-2/3 bg-gray-200 rounded-lg" />
             <div className="bg-gray-200 my-3 h-5 rounded-lg" />
             <div className="bg-gray-200 my-3 h-5 w-1/2 rounded-lg" />
